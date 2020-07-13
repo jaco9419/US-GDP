@@ -17,6 +17,9 @@ fetch(
 const createBarChart = (data) => {
   const graph = d3.select("#graph-container");
 
+  const barMargin = 0.2;
+  const barWidth = (w - barMargin * data.length) / data.length;
+
   const title = graph
     .append("h1")
     .text("United States GDP")
@@ -31,8 +34,8 @@ const createBarChart = (data) => {
     .enter()
     .append("rect")
     .attr("class", "bar")
-    .attr("x", (d, i) => i * 10)
-    .attr("y", (d, i) => h - d[1])
-    .attr("width", 7)
-    .attr("height", (d, i) => d[1]);
+    .attr("x", (d, i) => i * (barWidth + barMargin))
+    .attr("y", (d, i) => h - d[1] / 40)
+    .attr("width", barWidth)
+    .attr("height", (d, i) => d[1] / 40);
 };

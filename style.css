@@ -1,7 +1,16 @@
+#graph-container {
+  border: cadetblue solid 1px;
+  text-align: center;
+}
+
 svg {
   border: cadetblue solid 1px;
 }
 
 .bar {
   fill: cadetblue;
+}
+
+.bar:hover {
+  fill: black;
 }
