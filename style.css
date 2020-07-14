@@ -5,6 +5,22 @@
 
 svg {
   border: cadetblue solid 1px;
+  position: relative;
+}
+
+.tooltip {
+  background-color: gray;
+  position: absolute;
+  height: 50px;
+  width: 100px;
+  z-index: 100;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.tooltip.show {
+  display: flex;
 }
 
 .bar {
