@@ -1,5 +1,7 @@
 const w = 800;
-const h = 500;
+console.log(w);
+const h = 400;
+console.log(h);
 
 const tooltip = document.getElementById("tooltip");
 
@@ -12,7 +14,7 @@ fetch(
   .then((res) => res.json())
   .then((res) => {
     const { data } = res;
-    createBarChart(data.map((d) => [d[0], d[1], d[0].split("-")[0]]));
+    createBarChart(data.map((d) => [d[0], d[1]]));
   });
 
 //Handle SVG and d3
@@ -29,8 +31,11 @@ const createBarChart = (data) => {
     .range([h - padding, padding]);
 
   const xScale = d3
-    .scaleLinear()
-    .domain([d3.min(data, (d) => d[2]), d3.max(data, (d) => d[2])])
+    .scaleTime()
+    .domain([
+      d3.min(data, (d) => new Date(d[0])),
+      d3.max(data, (d) => new Date(d[0])),
+    ])
     .range([padding, w - padding]);
 
   const title = graph
@@ -50,22 +55,17 @@ const createBarChart = (data) => {
     .attr("class", "bar")
     .attr("data-date", (d) => d[0])
     .attr("data-gdp", (d) => d[1])
-    .attr("x", (d, i) => i * barWidth + padding)
-    .attr("y", (d, i) => yScale(d[1]) - padding)
+    .attr("x", (d, i) => xScale(new Date(d[0])))
+    .attr("y", (d, i) => yScale(d[1]))
     .attr("width", barWidth)
-    .attr("height", (d, i) => h - yScale(d[1]))
+    .attr("height", (d, i) => h - yScale(d[1]) - padding)
     .on("mouseover", (d, i) => {
-      let tooltipDistance;
-      if (w <= 500) {
-        tooltipDistance = padding * 13;
-      } else if (w > 500 && w <= 800) {
-        tooltipDistance = padding * 9;
-      } else {
-        tooltipDistance = padding * 7;
-      }
+      let tooltipDistance = 230;
+
       tooltip.classList.add("show");
       tooltip.style.left = i * barWidth + tooltipDistance + "px";
       tooltip.style.top = h - 2 * padding + "px";
+      tooltip.setAttribute("data-date", d[0]);
 
       tooltip.innerHTML = d[0] + "<br />" + d[1];
     })

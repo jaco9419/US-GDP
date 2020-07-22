@@ -1,15 +1,83 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --ff-primary: "Questrial", sans-serif;
+
+  --fw-bold: 900;
+
+  --clr-light: #f8f9fa;
+  --clr-dark: #212529;
+  --clr-accent: #f1c453;
+  --clr-bg: #d4e09b;
+
+  --fs-h1: 3rem;
+  --fs-h2: 1.75rem;
+  --fs-h3: 1.25rem;
+  --fs-body: 1rem;
+
+  --bs: 0.25em 0.25em 0.75em rgba(0, 0, 0, 0.25),
+    0.125em 0.125em 0.25em rgba(0, 0, 0, 0.15);
+}
+
+@media (min-width: 800px) {
+  :root {
+    --fs-h1: 2.5rem;
+    --fs-h2: 2rem;
+    --fs-h3: 1.5rem;
+    --fs-body: 1.125rem;
+  }
+}
+
+body {
+  font-family: var(--ff-primary);
+  background-color: var(--clr-light);
+  color: var(--clr-dark);
+  font-size: var(--fs-body);
+}
+
+/* Intro */
+
+.intro {
+  padding: 2rem;
+}
+
+.intro-title {
+  font-size: var(--fs-h1);
+}
+
+.intro-paragraph {
+  line-height: 1.5rem;
+  text-align: justify;
+}
+
+/* Graph */
+
 #graph-container {
-  border: cadetblue solid 1px;
   text-align: center;
+  padding: 1rem;
+  background: var(--clr-bg);
+  border-radius: 3px;
+  box-shadow: var(--bs);
+  width: 80%;
+  margin: 0 auto;
+  overflow-x: scroll;
 }
 
 svg {
-  border: cadetblue solid 1px;
   position: relative;
 }
 
+.title {
+  font-size: var(--fs-h2);
+}
+
 .tooltip {
-  background-color: gray;
+  background-color: var(--clr-dark);
+  color: var(--clr-light);
   position: absolute;
   height: 50px;
   width: 100px;
@@ -17,6 +85,8 @@ svg {
   display: none;
   align-items: center;
   justify-content: center;
+  border-radius: 3px;
+  opacity: 0.8;
 }
 
 .tooltip.show {
@@ -24,9 +94,9 @@ svg {
 }
 
 .bar {
-  fill: cadetblue;
+  fill: var(--clr-accent);
 }
 
 .bar:hover {
-  fill: black;
+  fill: var(--clr-light);
 }
