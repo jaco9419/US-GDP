@@ -15,6 +15,7 @@
   --clr-dark: #212529;
   --clr-accent: #f1c453;
   --clr-bg: #d4e09b;
+  --clr-link: #900d0d;
 
   --fs-h1: 3rem;
   --fs-h2: 1.75rem;
@@ -46,7 +47,14 @@ body {
 .header {
   width: 100%;
   background: var(--clr-accent);
-  height: 250px;
+}
+
+.header svg {
+  display: block;
+}
+
+.header svg path {
+  fill: var(--clr-light);
 }
 
 /* Intro */
@@ -57,11 +65,27 @@ body {
 
 .intro-title {
   font-size: var(--fs-h1);
+  margin: 1rem 2rem 3rem 2rem;
 }
 
 .intro-paragraph {
   line-height: 1.5rem;
   text-align: justify;
+  margin: 2rem;
+}
+
+.intro-more-info {
+  text-align: right;
+  margin: 2rem;
+}
+
+.intro-more-info a {
+  text-decoration: none;
+  color: var(--clr-link);
+}
+
+.intro-more-info a:hover {
+  text-decoration: underline;
 }
 
 /* Graph */
@@ -110,4 +134,24 @@ svg {
 
 .bar:hover {
   fill: var(--clr-light);
+}
+
+.graph-more-info {
+  text-align: right;
+  margin: 2rem 6rem;
+}
+
+/* Footer */
+
+footer {
+  width: 100%;
+  height: 80px;
+  background-color: var(--clr-accent);
+  margin-top: 6rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.footer-description {
+  margin: auto 1rem;
 }
