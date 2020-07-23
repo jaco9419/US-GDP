@@ -2,6 +2,8 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 :root {
@@ -9,7 +11,7 @@
 
   --fw-bold: 900;
 
-  --clr-light: #f8f9fa;
+  --clr-light: #fff;
   --clr-dark: #212529;
   --clr-accent: #f1c453;
   --clr-bg: #d4e09b;
@@ -39,6 +41,14 @@ body {
   font-size: var(--fs-body);
 }
 
+/* Header */
+
+.header {
+  width: 100%;
+  background: var(--clr-accent);
+  height: 250px;
+}
+
 /* Intro */
 
 .intro {
@@ -57,6 +67,7 @@ body {
 /* Graph */
 
 #graph-container {
+  position: relative;
   text-align: center;
   padding: 1rem;
   background: var(--clr-bg);
@@ -76,9 +87,9 @@ svg {
 }
 
 .tooltip {
+  position: absolute;
   background-color: var(--clr-dark);
   color: var(--clr-light);
-  position: absolute;
   height: 50px;
   width: 100px;
   z-index: 100;

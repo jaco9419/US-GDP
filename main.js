@@ -40,7 +40,7 @@ const createBarChart = (data) => {
 
   const title = graph
     .append("h1")
-    .text("United States GDP")
+    .text("US GDP History")
     .attr("class", "title")
     .attr("id", "title");
 
@@ -60,7 +60,7 @@ const createBarChart = (data) => {
     .attr("width", barWidth)
     .attr("height", (d, i) => h - yScale(d[1]) - padding)
     .on("mouseover", (d, i) => {
-      let tooltipDistance = 230;
+      let tooltipDistance = padding * 2.5;
 
       tooltip.classList.add("show");
       tooltip.style.left = i * barWidth + tooltipDistance + "px";
